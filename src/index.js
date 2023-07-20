@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const userRoute = require("./routes/users");
+const recipesRoute = require("./routes/recipes");
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(express.json());
 
 // Routes //
 app.use("/auth", userRoute);
+app.use("/recipes", recipesRoute);
 
 mongoose
   .connect(process.env.MONGO_URI, {
