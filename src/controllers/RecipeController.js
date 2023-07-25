@@ -24,8 +24,8 @@ const createRecipe = async (req, res) => {
 
 const saveRecipe = async (req, res) => {
   try {
-    const recipe = await RecipeModel.findById(req?.params?._id);
-    const user = await UserModel.findById(req?.user?._id);
+    const recipe = await RecipeModel.findById(req?.body?.id);
+    const user = await UserModel.findById(req?.body?.userID);
 
     if (!recipe) {
       return res.status(404).json({ message: "Recipe not found" });
