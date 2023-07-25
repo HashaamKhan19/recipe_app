@@ -15,9 +15,9 @@ router.post("/", createRecipe);
 
 router.put("/", saveRecipe);
 
-router.get("/savedRecipes/ids", async (req, res) => {
+router.get("/savedRecipes/ids/:userID", async (req, res) => {
   try {
-    const user = await UserModel.findById(req?.user?._id);
+    const user = await UserModel.findById(req?.params?.userID);
     return res.status(200).json({ savedRecipes: user?.savedRecipes });
   } catch (error) {
     return res.status(500).json({ message: error.message });
